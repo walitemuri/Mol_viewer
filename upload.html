@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@400;500&display=swap"
+        rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-color: #3E454B;
+            --white-color: #ECECED;
+            --primary-color: #92C69B;
+            --bg-color-variant: #656A6F;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: 'Inter', sans-serif;
+            margin: 0 auto;
+        }
+
+        a {
+            color: var(--white-color);
+            text-decoration: none;
+        }
+
+
+        header {
+            display: flex;
+            gap: 120px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        header>h3 {
+            color: var(--white-color);
+        }
+
+        li {
+            list-style: none;
+        }
+
+        header>nav>ul {
+            display: flex;
+            color: var(--white-color);
+            justify-self: center;
+            gap: 40px;
+        }
+
+        .main--container {
+            display: flex;
+            flex-direction: column;
+            gap: 70px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            justify-content: center;
+        }
+
+        article {
+            text-align: center;
+            color: var(--white-color);
+        }
+
+
+        article form {
+            margin-left: 10vw;
+        }
+
+        form {
+            display: flex;
+            width: 550px;
+        }
+
+        input {
+            display: inline;
+        }
+
+        .nav-elem:hover {
+            transition: 0.2s ease-in-out;
+            background-color: #92C69B;
+            color: #000000;
+        }
+
+        .btn {
+            box-sizing: border-box;
+            width: 100px;
+            padding: 12px;
+            background: #92C69B;
+            border: 1px solid #000000;
+            box-shadow: 0 0px 6px rgba(0, 0, 0, 0.30);
+            margin-right: 25px;
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+
+        .btn:hover {
+            transition: 0.1s ease-in;
+            background-color: #ECECED;
+            cursor: pointer;
+        }
+
+        #sdf_file {
+            padding: 10px;
+        }
+
+        .mol--name {
+            background-color: #3E454B;
+            opacity: 0.6;
+            border: var(--bg-color);
+            text-align: center;
+            color: white;
+            box-shadow: 0 0px 6px rgba(0, 0, 0, 0.30);
+            padding: 10px;
+            border: 1px solid #000000;
+        }
+
+        .mol--name:hover {
+            transition: ease-in;
+            border-color: black;
+            cursor: pointer
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $('form').submit(function (e) {
+                e.preventDefault();
+                var inputFile = $('#sdf_file')[0];
+                if (inputFile.files.length == 0) {
+                    alert('Please select a file to upload.');
+                    return false;
+                }
+                var input = $('#molecule_name').val();
+                if (input == '') {
+                    alert('Please Enter a Name');
+                    return false;
+                }
+                // Create a FormData object to send the file and other form data
+                var formData = new FormData();
+                formData.append('molecule_name', $('#molecule_name').val());
+                formData.append('filename', inputFile.files[0]);
+
+                // Send the form data using AJAX
+                $.ajax({
+                    url: '/molecule',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        alert('File uploaded successfully!');
+                        // handle success response
+                    },
+                    error: function (xhr, status, error) {
+                        alert('Error uploading file.');
+                        // handle error response
+                    }
+                });
+            });
+        });
+    </script>
+    <title>Upload Your SDF Files</title>
+</head>
+
+<body>
+    <header>
+        <div class="icon"></div>
+        <h3>Molecule Viewer</h3>
+        <nav class="navigation">
+            <ul>
+                <li><a class="nav-elem" href="/">View Molecule</a></li>
+                <li><a class="nav-elem" href="/upload">Upload SDF</a></li>
+                <li><a class="nav-elem" href="/elements">Elements List</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <article class="main--container">
+        <h3 class="title">File Upload</h3>
+        <form enctype="multipart/form-data" method="post">
+            <input class="mol--name" type="text" id="molecule_name" name="" placeholder="Enter molecule name"><br>
+            <input type="file" id="sdf_file" name="filename">
+            <br>
+            <input class="btn" type="submit" value="Upload"><br>
+        </form>
+        <p>
+            Use this form to upload your SDF files and view your favorite molecules in our viewer! Simply choose the
+            file from your computer and enter a name for your molecule in the field provided. Once you click the
+            "Upload" button, your file will be sent to our server for processing and you will be able to view your
+            molecule in just a few seconds. It's that easy!
+        </p>
+    </article>
+</body>
+
+</html>

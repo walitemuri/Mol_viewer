@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@400;500&display=swap"
+        rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-color: #3E454B;
+            --white-color: #ECECED;
+            --primary-color: #92C69B;
+            --bg-color-variant: #656A6F;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: 'Inter', sans-serif;
+            margin: 0 auto;
+            height: 1400px;
+            color: #ECECED;
+        }
+
+        a {
+            color: var(--white-color);
+            text-decoration: none;
+        }
+
+
+        header {
+            display: flex;
+            gap: 120px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        header>h3 {
+            color: var(--white-color);
+        }
+
+        li {
+            list-style: none;
+        }
+
+        header>nav>ul {
+            display: flex;
+            color: var(--white-color);
+            justify-self: center;
+            gap: 40px;
+        }
+
+        .nav-elem:hover {
+            transition: 0.2s ease-in-out;
+            background-color: var(--primary-color);
+            color: #000;
+        }
+
+        input {
+            text-align: center;
+            color: #000;
+        }
+
+        form {
+            margin-bottom: 10px;
+        }
+
+        .form-container {
+            margin: 0 auto;
+            width: 195px;
+            height: 650px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container>h4 {
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 20px;
+        }
+
+        .input-field {
+            font-size: 14px;
+            font-weight: normal;
+            margin-bottom: 20px;
+            margin: 20 auto;
+            background-color: #383e44;
+            border: var(--bg-color);
+            text-align: center;
+            font-weight: bold;
+            color: #ECECED !important;
+            box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.90);
+            padding: 15px 0;
+            padding-top: 10px;
+            width: 300px;
+        }
+
+        .outer-container {
+            margin: 30px;
+            width: 450px;
+            height: 650px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.80);
+        }
+
+
+
+        .dummy {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .elem-list {
+            font-weight: bold;
+            width: 550px;
+            height: 450px;
+            margin-top: 50px;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.80);
+            font-size: 20px;
+        }
+
+        .elem-list ul {
+            margin-top: 20px;
+            height: 300px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .elem-list ul li {
+            width: 400px;
+            margin-bottom: 20px;
+            margin-top: 10px;
+            height: 60px;
+            padding: 20px;
+            text-align: start;
+            font-size: 14px;
+            padding-left: 20px;
+            font-weight: bold;
+            background-color: #383e44;
+            box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.90);
+        }
+
+
+        .elem-list ul li:hover {
+            transition: 0.04s ease-in-out;
+            cursor: pointer;
+            border: 2px solid var(--white-color);
+        }
+
+        .elem-list h4 {
+            padding: 20px;
+        }
+
+        .elem-list:hover ul {
+            overflow-y: scroll;
+        }
+
+        .elem-list ul::-webkit-scrollbar-thumb {
+            background-color: var(--primary-color);
+        }
+
+        #submit-btn {
+            padding: 10px 15px;
+            background-color: var(--primary-color);
+            border: none;
+            color: black;
+            box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.90);
+        }
+
+        #submit-btn:hover {
+            cursor: pointer;
+            transition: 0.2s ease-in;
+            background-color: var(--white-color);
+
+        }
+
+        .list-item-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .delete_btn {
+            margin-top: 10px;
+            color: var(--white-color);
+            font-weight: bold;
+            padding: 15px 10px;
+            height: 60px;
+            align-self: stretch;
+            box-sizing: border-box;
+            border: 0px;
+            margin-left: 15px;
+            background-color: #b62b29;
+            box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.90);
+        }
+
+        .delete_btn:hover {
+            cursor: pointer;
+            transition: 0.2s ease-in;
+            background-color: var(--white-color);
+            color: #000;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: '/elementslist',
+                dataType: 'json',
+                success: function (data) {
+                    var select = $('#elems');
+                    $.each(data, function (index, element) {
+                        var list_item = '<li>' + " " + element.element_name + " " + (element.colour1 + " " + element.colour2 + " " + element.colour3) + ' Radius: ' + element.radius + '</li>';
+                        var delete_button = '<button class="delete_btn" id="' + element.element_no + '">' + 'Delete' + '</button>';
+                        var div = '<div class="list-item-container">' + list_item + delete_button + '</div>';
+                        select.append(div);
+                        $('#' + element.element_no).click(function () {
+                            $.ajax({
+                                url: '/deleteelement',
+                                type: 'DELETE',
+                                data: {
+                                    element_no: element.element_no
+                                },
+                                success: function () {
+                                    $('#' + element.element_no).parent().remove();
+                                },
+                                error: function () {
+                                    alert('Failed to delete element');
+                                }
+                            });
+                        });
+                    });
+                }
+            });
+
+            $('#submit-btn').click(function () {
+                var element_number = $('#element--number').val()
+                var element_code = $('#element--code').val();
+                var element_name = $('#element--name').val();
+                var colour1 = $('#colour-1').val();
+                var colour2 = $('#colour-2').val();
+                var colour3 = $('#colour-3').val();
+                var radius = $('#radius').val();
+                $.ajax({
+                    url: '/addelement',
+                    type: 'POST',
+                    data: {
+                        element_number: element_number,
+                        element_code: element_code,
+                        element_name: element_name,
+                        colour1: colour1,
+                        colour2: colour2,
+                        colour3: colour3,
+                        radius: radius
+                    },
+                    success: function () {
+                        var select = $('#elems');
+                        var list_item = '<li>' + " " + element_name + " " + (colour1 + " " + colour2 + " " + colour3) + ' Radius: ' + radius + '</li>';
+                        var delete_button = '<button class="delete_btn" id="' + element_code + '">' + 'Delete' + '</button>';
+                        var div = '<div class="list-item-container">' + list_item + delete_button + '</div>';
+                        select.append(div);
+                        $('#' + element_code).click(function () {
+                            $.ajax({
+                                url: '/deleteelement',
+                                type: 'DELETE',
+                                data: {
+                                    element_no: element_number
+                                },
+                                success: function () {
+                                    $('#' + element_code).remove();
+                                    $('li:contains(' + element_code + ')').remove();
+                                },
+                                error: function () {
+                                    alert('Failed to delete element');
+                                }
+                            });
+                        });
+                    },
+                    error: function () {
+                        alert('Failed to add element');
+                    }
+                });
+            });
+        });
+    </script>
+    <title>Upload Your SDF Files</title>
+</head>
+
+<body>
+    <header>
+        <div class="icon"></div>
+        <h3>Molecule Viewer</h3>
+        <nav class="navigation">
+            <ul>
+                <li><a class="nav-elem" href="/">View Molecule</a></li>
+                <li><a class="nav-elem" href="/upload">Upload SDF</a></li>
+                <li><a class="nav-elem" href="/elements">Elements List</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="dummy">
+        <div class="outer-container">
+            <div class="form-container">
+                <h4>Insert Element</h4>
+                <form enctype="multipart/form-data" method="post">
+                    <input class="input-field" type="text" id="element--number" name=""
+                        placeholder="Element Number"><br>
+                    <input class="input-field" type="text" id="element--code" name="" placeholder="Element Code"><br>
+                    <input class="input-field" type="text" id="element--name" placeholder="Element Name"><br>
+                    <input class="input-field" type="text" id="colour-1" placeholder="Colour 1"><br>
+                    <input class="input-field" type="text" id="colour-2" placeholder="Colour 2"><br>
+                    <input class="input-field" type="text" id="colour-3" placeholder="Colour 3">
+                    <input class="input-field" type="text" id="radius" placeholder="Radius">
+                </form>
+                <button id="submit-btn">Submit</button>
+            </div>
+        </div>
+        <div class="elem-list">
+            <h4>Elements List</h4>
+            <ul id="elems">
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
