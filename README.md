@@ -6,6 +6,13 @@ Author: Wali Temuri
 
 MoleculeViewer is a powerful and efficient web application designed for scientists, researchers, and chemistry enthusiasts. It enables users to visualize and interact with molecular structures by parsing and rendering Structure Data File (SDF) formats with ease.
 
+### Technologies Used
+
+- C for low-level quick computation required for rotating molecules, sorting atoms, computing coordinates
+- Python/SWIG in order to interface with C code and HTTPServer used for back-end server
+- HTML/CSS for front-end design
+- Jquery/Ajax for requests to the back-end which Asynchronously updates the front-end interface
+
 ### Key Features
 
 - SDF File Support: Seamlessly parse and render SDF files, a widely-used format for representing chemical compounds and their associated data.
