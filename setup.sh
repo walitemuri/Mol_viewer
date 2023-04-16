@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Run the swig3.0 command
 swig3.0 -python molecule.i
 
