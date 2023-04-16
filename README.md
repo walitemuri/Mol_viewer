@@ -11,6 +11,7 @@ MoleculeViewer is a powerful and efficient web application designed for scientis
 - C for low-level quick computation required for rotating molecules, sorting atoms, computing coordinates
 - Python/SWIG in order to interface with C code and HTTPServer used for back-end server
 - HTML/CSS for front-end design
+- SQLite as the database to store molecule, atom, bond information
 - Jquery/Ajax for requests to the back-end which Asynchronously updates the front-end interface
 
 ### Key Features
