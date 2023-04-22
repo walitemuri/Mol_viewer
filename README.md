@@ -2,8 +2,14 @@
 
 Author: Wali Temuri
 
+### Parse and render SDF files that you Upload
+![Mol_Viewer_MolDisplay](https://user-images.githubusercontent.com/108627530/233802817-72f94d41-36ac-4215-8218-a96ea49d4c93.gif)
+
+### Delete and Add New Elements
+![Mol_viewer_elementslist](https://user-images.githubusercontent.com/108627530/233802837-a011c34b-1ef6-4d76-805b-aacf44ec283b.gif)
+
+
 ## Description
-![ezgif com-gif-maker](https://user-images.githubusercontent.com/108627530/233801496-ff30a18c-7d2f-4d74-b667-c9d0353c267a.gif)
 
 MoleculeViewer is a powerful and efficient web application designed for scientists, researchers, and chemistry enthusiasts. It enables users to visualize and interact with molecular structures by parsing and rendering Structure Data File (SDF) formats with ease.
 
