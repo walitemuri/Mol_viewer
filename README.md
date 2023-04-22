@@ -3,7 +3,8 @@
 Author: Wali Temuri
 
 ### Parse and render SDF files that you Upload
-![Mol_Viewer_MolDisplay_AdobeExpress](https://user-images.githubusercontent.com/108627530/233803026-6f4e0ed9-8aec-4758-ae82-95cd976f0e5f.gif)
+![Mol_Viewer_MolDisplay](https://user-images.githubusercontent.com/108627530/233803053-0c1cc534-e746-40f7-b3c1-acff81d6fb0b.gif)
+
 
 
 ### Delete and Add New Elements
