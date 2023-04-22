@@ -3,7 +3,7 @@
 Author: Wali Temuri
 
 ### Parse and render SDF files that you Upload
-![Mol_Viewer_MolDisplay](https://user-images.githubusercontent.com/108627530/233802817-72f94d41-36ac-4215-8218-a96ea49d4c93.gif)
+![Mol_Viewer_MolDisplay](https://user-images.githubusercontent.com/108627530/233802899-8e6d3313-bb67-47f8-96d3-3694974fde69.gif)
 
 ### Delete and Add New Elements
 ![Mol_viewer_elementslist](https://user-images.githubusercontent.com/108627530/233802837-a011c34b-1ef6-4d76-805b-aacf44ec283b.gif)
