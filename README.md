@@ -9,7 +9,8 @@ Author: Wali Temuri
 
 
 ### Delete and Add New Elements
-![Mol_viewer_elementslist](https://user-images.githubusercontent.com/108627530/233802837-a011c34b-1ef6-4d76-805b-aacf44ec283b.gif)
+![Mol_viewer_elementslist](https://user-images.githubusercontent.com/108627530/233803317-1e0abc44-7b5b-43b0-b38d-12bd1aa1b7e2.gif)
+
 
 
 ## Description
@@ -42,8 +43,8 @@ MoleculeViewer is a powerful and efficient web application designed for scientis
 
 Firstly run the setup script using the following command:
 
-```
-./setup.sh
+```bash
+source setup.sh
 ```
 
 This should compile the C program, now you must run the server with your desired port.
