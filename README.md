@@ -4,7 +4,7 @@ Author: Wali Temuri
 
 ## Description
 
-MoleculeViewer is a powerful and efficient web application designed for scientists, researchers, and chemistry enthusiasts. It enables users to visualize and interact with molecular structures by parsing and rendering Structure Data File (SDF) formats with ease.
+MoleculeViewer is a powerful and efficient web application designed for scientists, researchers, and chemistry enthusiasts. It enables users to visualize and interact with molecular structures by parsing and rendering Structure Data File (SDF) formats with ease. The molecule information is processed and turned into an SVG object with aesthetic shading and colouring, to be viewed, rotated and you can change the colour of the atoms. 
 
 ### Parse and render SDF files that you Upload
 ![Mol_Viewer_MolDisplay](https://user-images.githubusercontent.com/108627530/233803138-4b0d4b8f-39f9-4d00-8923-e016b3569b10.gif)
